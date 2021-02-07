@@ -1,14 +1,12 @@
+## Ressources :
+
+https://github.com/t0mm4rx/ft_services
+
 # ft_services
- This is a System Administration and Networking project
+This is a System Administration and Networking project
 
-What is Docker?
+Ft_services will introduce you to Kubernetes. You will discover cluster management and
+deployment with Kubernetes. You will virtualize a network and do "clustering".
 
-Docker is a software that allow users to run lightweight virtual machines. A container is a single lightweight virtual machine running an os, with its own memory space and storage. It is created on an image, which is a template with preconfigured software.
+## Kubernetes :
 
-What is Kubernetes?
-
-Kubernetes is an open source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications.
-
-What is container orchestration?
-
-Container orchestration automates the deployment, management, scaling, and networking of containers.
