@@ -21,14 +21,14 @@ RUN mkdir /www
 RUN chown -R www:www /var/lib/nginx
 RUN chown -R www:www /www
 COPY index.html /www/index.html
-# RUN touch /run/openrc/softlevel
+
 COPY  /nginx.conf /etc/nginx/nginx.conf
 # site : https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-on-centos-7#step-2-create-the-ssl-certificate
 # RUN mkdir /etc/ssl/private
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/localhost.key -out /etc/ssl/certs/localhost.crt
+RUN yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/localhost.key -out /etc/ssl/certs/localhost.crt
 
-
-
+RUN mkdir /run/openrc/
+RUN touch /run/openrc/softlevel
 # vim /etc/nginx/conf.d/default.conf 
 # touch /run/openrc/softlevel
 # CMD ["sh", "script.sh"]
