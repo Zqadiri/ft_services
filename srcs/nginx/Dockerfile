@@ -1,5 +1,5 @@
 # creates a layer from the alpine:3.13 Docker image.
-FROM alpine:3.13
+FROM alpine:3.11
 
 # 80 443 22
 EXPOSE 80
