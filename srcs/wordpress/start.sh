@@ -1,7 +1,7 @@
 #!/bin/bash
+openrc default
 rc-status
-rc-service php7-fpm start
+rc-service php-fpm7 start
 rc-update 
 rc-service nginx restart
-nginx -g "daemon off;"
 /bin/sh
