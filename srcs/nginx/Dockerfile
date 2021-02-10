@@ -25,9 +25,9 @@ RUN adduser -D -g 'www' www
 
 # setup files and permissions
 # change file owner chown [OPTION]... [OWNER][:[GROUP]] FILE...
-RUN  mkdir /www
-RUN  chown -R www:www /www
-COPY index.html /www/index.html
+# RUN  mkdir /www
+RUN  chown -R www:www /var/www
+COPY index.html /var/www/index.html
 
 # for access_log 
 RUN  chown -R www:www /var/lib/nginx

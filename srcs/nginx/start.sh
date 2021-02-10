@@ -1,7 +1,8 @@
 #!/bin/bash
+adduser  user < /psd
 rc-status
 rc-update 
 rc-service sshd restart
-nginx -g "daemon off;"
+rc-service nginx start
 /bin/sh
  
