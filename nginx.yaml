@@ -39,7 +39,6 @@ spec:
   selector: # makes a cnx btw the service and its pod
       matchLabels:
         app: nginx
-
 # this configuraton  applies to a pod / container
   template:
   # pod metadata
