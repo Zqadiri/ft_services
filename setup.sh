@@ -12,4 +12,6 @@ kubectl apply -f metallb.yaml
 
 
 docker build -t nginx_service  srcs/nginx
+docker build -t wordpress_service  srcs/nginx
 kubectl apply -f nginx.yaml
+kubectl apply -f wordpress.yaml
