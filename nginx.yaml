@@ -1,0 +1,48 @@
+---
+apiVersion: v1  # version 
+kind: Deployment
+
+# metadata part 
+metadata:   # Metadata is data that describes other data
+  name: nginx # the key-value pair  of the depl
+  labels:
+    app: nginx
+
+# specification part 
+spec:
+  type : LoadBalancer
+  replicas: 1
+  selector: # makes a cnx btw the service and its pod
+      app: nginx
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPorts: 80
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPorts: 443
+    - name: ssh
+      port: 22
+      targetPorts: 22
+
+# this configuraton  applies to a pod / container
+  template:
+  # pod metadata
+    metadata:
+      labels:
+        app: nginx
+  # pod spec 
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+
