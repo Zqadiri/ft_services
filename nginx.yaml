@@ -25,7 +25,7 @@ spec:
       targetPort: 22
 
 ---
-
+  
 apiVersion: apps/v1  # version 
 kind: Deployment 
 # metadata part 
@@ -56,4 +56,9 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - name : http
+          containerPort: 80
+        - name : https
+          containerPort: 443
+        - name : ssh
+          containerPort: 22
