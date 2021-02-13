@@ -12,7 +12,7 @@ spec:
     app: wordpress
   ports:
   - port: 5050
-    targetPort: 5050
+    targetPort: 80
 
 ---
 apiVersion: apps/v1
