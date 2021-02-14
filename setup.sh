@@ -1,9 +1,9 @@
 
 echo "delete mini...."
-minikube delete
+# minikube delete
 echo "start mini...."
-minikube start --driver=virtualbox
-eval $(minikube docker-env)
+#ßminikube start --driver=virtualbox
+# eval $(minikube docker-env)
 
 echo "add metallb ...."
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
@@ -14,7 +14,9 @@ kubectl apply -f metallb.yaml
 
 
 docker build -t nginx_service  srcs/nginx
+docker build -t mysql_service  srcs/mysql
 # docker build -t wordpress_service  srcs/nginx
 kubectl apply -f nginx.yaml
+kubectl apply -f mysql.yaml
 # kubectl apply -f wordpress.yaml
 minikube dashboard
