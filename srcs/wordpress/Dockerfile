@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/wordpress
 # https://github.com/satellitewp/rocket-nginx/wiki/Nginx-configuration-for-WordPress
 FROM alpine:3.11
-
+EXPOSE 5050
 # install packages 
 RUN  apk update
 RUN  apk add wget curl
@@ -27,8 +27,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY wp-config.php /var/www/wordpress/wp-config.php
 # RUN apk add wget php5-mysql mysql mysql-client php5-zlib 
-COPY start.sh /
-# RUN touch /run/openrc/softlevel
-EXPOSE 5050
+COPY start.sh /start.sh
+RUN chmod +x start.sh
+CMD ["sh", "start.sh"]
+
+
 # ENTRYPOINT sh start.sh
 # CMD sh start.sh
