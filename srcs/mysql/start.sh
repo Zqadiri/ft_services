@@ -20,8 +20,4 @@ mysql -u root -e "FLUSH PRIVILEGES;";
 # Export MySQL Database
 # mysql -uUSERNAME -p DB_NAME < import_file.sql
 # mysql -uroot  wp_db < wp_db.sql
-while true
-do
-    sleep 2;
-done
-
+sleep infinity

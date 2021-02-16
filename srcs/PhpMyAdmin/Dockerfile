@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/wordpress
 # https://github.com/satellitewp/rocket-nginx/wiki/Nginx-configuration-for-WordPress
 FROM alpine:3.11
-
+EXPOSE 5000
 # install packages 
 RUN  apk update
 RUN  apk add wget curl
@@ -17,6 +17,8 @@ RUN  rm phpMyAdmin-5.0.2-all-languages.tar.gz
 RUN  mkdir -p /var/www/
 RUN  mv phpmyadmin /var/www/phpmyadmin
 
+COPY  config.inc.php /var/www/phpmyadmin
+
 RUN  adduser -D -g 'www' www
 RUN  chown -R www:www /var/www
 RUN  chown -R www:www /var/lib/nginx
@@ -24,12 +26,6 @@ RUN  mkdir -p /run/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf 
 
-
-
-# COPY wp-config.php /var/www/wordpress/wp-config.php
-# RUN apk add wget php5-mysql mysql mysql-client php5-zlib 
-COPY start.sh /
-# RUN touch /run/openrc/softlevel
-EXPOSE 5000
-# ENTRYPOINT sh start.sh
-# CMD sh start.sh
+COPY start.sh /start.sh
+RUN chmod +x start.sh
+CMD ["sh", "start.sh"]

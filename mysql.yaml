@@ -14,7 +14,7 @@ spec:
   clusterIP: 10.101.88.129
   
 
-  # Will open access to an application within a cluster, without access from the world.
+# Will open access to an application within a cluster, without access from the world.
 ---
 
 apiVersion: apps/v1

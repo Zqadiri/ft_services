@@ -1,6 +1,6 @@
 
 echo "delete mini...."
-minikube delete
+# minikube delete
 echo "start mini...."
 # minikube start --driver=virtualbox
 minikube start --cpus 4 --memory 8192
@@ -17,7 +17,11 @@ kubectl apply -f metallb.yaml
 docker build -t nginx_service  srcs/nginx
 docker build -t mysql_service  srcs/mysql
 docker build -t wordpress_service  srcs/wordpress
+docker build -t phpmyadmin_service  srcs/phpmyadmin
+
 kubectl apply -f nginx.yaml
 kubectl apply -f mysql.yaml
 kubectl apply -f wordpress.yaml
+kubectl apply -f phpmyadmin.yaml
+
 minikube dashboard

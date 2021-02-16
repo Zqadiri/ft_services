@@ -25,7 +25,6 @@ spec:
       targetPort: 22
 
 ---
-  
 apiVersion: apps/v1  # version 
 kind: Deployment 
 # metadata part 
