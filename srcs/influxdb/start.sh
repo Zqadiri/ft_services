@@ -1,5 +1,8 @@
-
 #!/bin/sh
 
 # Start Telegraf and Influxdb.
-/etc/init.d/telegraf start & influxd
+rc-status
+rc-service telegraf start 
+# influxd
+/bin/sh
+# sleep infinity

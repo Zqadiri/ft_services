@@ -19,7 +19,13 @@ RUN apk add openssl
 RUN apk add --no-cache openrc
 RUN apk add vim
 RUN apk add nginx
+RUN apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alpine/edge/community
+RUN openrc && touch /run/openrc/softlevel && \
+		rc-update add telegraf
 
+COPY telegraf.conf /etc/
+# RUN mkdir -p /etc/telegraf
+# COPY telegraf.conf /etc/telegraf/telegraf.conf
 #create user foe the web server  https://linux.die.net/man/8/adduser
 RUN adduser -D -g 'www' www
 
@@ -41,7 +47,4 @@ COPY psd /
 COPY start.sh /
 # RUN rc-status
 # RUN rc-service sshd start 
-
-RUN mkdir /run/openrc/
-RUN touch /run/openrc/softlevel
 CMD ["sh", "/start.sh"]

@@ -36,8 +36,8 @@ metadata:   # Metadata is data that describes other data
 spec:
   replicas: 1
   selector: # makes a cnx btw the service and its pod
-      matchLabels:
-        app: nginx
+    matchLabels:
+      app: nginx
 # this configuraton  applies to a pod / container
   template:
   # pod metadata
