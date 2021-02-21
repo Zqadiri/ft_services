@@ -16,6 +16,12 @@ RUN  rm -rf  latest.tar.gz
 RUN  mkdir -p /var/www/
 RUN  mv wordpress /var/www/wordpress
 
+# Telegraf
+RUN apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alpine/edge/community
+RUN openrc && touch /run/openrc/softlevel
+RUN mkdir -p /etc/telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+
 RUN  adduser -D -g 'www' www
 RUN  chown -R www:www /var/www
 RUN  chown -R www:www /var/lib/nginx

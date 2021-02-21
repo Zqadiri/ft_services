@@ -10,6 +10,7 @@ mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 
 rc-status;
 rc-service mariadb start;
+rc-service  telegraf start;
 
 # Create Database in MySQL
 mysql -u root -e "CREATE DATABASE wp_db"
@@ -20,4 +21,5 @@ mysql -u root -e "FLUSH PRIVILEGES;";
 # Export MySQL Database
 # mysql -uUSERNAME -p DB_NAME < import_file.sql
 # mysql -uroot  wp_db < wp_db.sql
+
 sleep infinity

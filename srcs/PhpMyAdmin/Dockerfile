@@ -17,6 +17,13 @@ RUN  rm phpMyAdmin-5.0.2-all-languages.tar.gz
 RUN  mkdir -p /var/www/
 RUN  mv phpmyadmin /var/www/phpmyadmin
 
+# Telegraf 
+RUN apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alpine/edge/community
+RUN openrc && touch /run/openrc/softlevel
+RUN mkdir -p /etc/telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
+
+
 COPY  config.inc.php /var/www/phpmyadmin
 
 RUN  adduser -D -g 'www' www
@@ -25,6 +32,7 @@ RUN  chown -R www:www /var/lib/nginx
 RUN  mkdir -p /run/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf 
+
 
 COPY start.sh /start.sh
 RUN chmod +x start.sh

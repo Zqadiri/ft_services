@@ -9,6 +9,11 @@ RUN mkdir /run/openrc/
 RUN touch /run/openrc/softlevel
 #RUN mkdir -p /var/lib/mysql /run/mysqld/
 
+# Telegraf
+RUN apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alpine/edge/community
+RUN openrc && touch /run/openrc/softlevel
+RUN mkdir -p /etc/telegraf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
 
 COPY  mariadb-server.cnf  /etc/my.cnf.d
 # datadir It is the directory where your database files are stored.
