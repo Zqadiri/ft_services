@@ -16,7 +16,7 @@ https://docs.nginx.com/nginx/admin-guide/
 
 ## what is kubernetes ?
 
-> Kubernetes (also known as k8s or "kube") is an [open source](https://www.redhat.com/en/topics/open-source/what-is-open-source) container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications. In other words, you can cluster together groups of hosts running Linux® containers, and Kubernetes helps you easily and efficiently manage those clusters.
+> Kubernetes (also known as k8s or "kube") is an open source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications. In other words, you can cluster together groups of hosts running Linux® containers, and Kubernetes helps you easily and efficiently manage those clusters.
 
 ### Learn to speak Kubernetes :
 
@@ -35,3 +35,80 @@ As is the case with most technologies, language specific to Kubernetes can ac
 
 > Minikube is a utility you can use to run Kubernetes (k8s) on your local machine. It creates a single node cluster contained in a virtual machine (VM). This cluster lets you demo Kubernetes operations without requiring the time and resource-consuming installation of full-blown K8s.
 
+## Basic docker commands :
+
+```docker
+# see all images 
+docker images
+
+# Build an image from a Dockerfile
+docker build -t <image name> <Dockerfile dir>
+
+# delete image 
+dokcer rmi <image id>
+
+# see all running containers 
+docker ps -a
+
+# Start an instance of a docker image
+docker run -it <your image name> 
+
+# Copy files/folders between a container and the local filesystem
+docker cp  <container id>:<src_path>  <dest_path>
+
+# remove al stopped containers 
+docker rm $(docker ps -a -q)
+
+# Stop a container
+docker kill <container ID>
+
+# Delete all unused Docker images and cache and free SO MUCH SPACE on your computer
+docker system prune
+
+# Start an instance of a docker image
+docker run -it <image name>
+
+# Stop a container
+docker kill <container id>
+```
+
+## Basic kubectl commands :
+
+```docker
+# List deployments
+kubectl get deployment
+
+# List all pods 
+kubectl get pods
+kubectl get pods -o wide
+
+# Create a pod from a YAML file
+kubectl create -f <file.yaml>
+
+# Delete a pod
+kubectl delete deployment <your deployment>
+kubectl delete service <your service>
+
+# Remove a pod using the name and type listed in yaml FILE:
+kubectl delete -f <yaml file>
+
+# Remove all pods
+kubectl delete pods --all
+
+# Copy data to pod or to our computer
+kubectl cp <pod name>:<file> <to>
+
+ # MINIKUBE
+
+# starts a local Kubernetes cluster 
+minikube start
+
+# Deletes a local Kubernetes cluster
+minikube delete <flags>
+
+# Retrieves the IP address of the specified node 
+minikube ip <flags>
+
+# Stops a running local Kubernetes cluster
+minikube stop <flags>
+```

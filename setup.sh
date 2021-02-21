@@ -33,6 +33,6 @@ kubectl apply -f ftps.yaml
 
 
 
-minikube dashboard
+minikube dashboard &
 
 # https://skylerlehan.dev/reconfigure-minikubes-cpus-and-memory/
