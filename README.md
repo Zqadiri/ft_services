@@ -6,11 +6,10 @@ http://nginx.org/en/docs/dirindex.html
 
 https://docs.nginx.com/nginx/admin-guide/
 
+# Notion :
+https://www.notion.so/ft_services-f032ecf159dc4994a3bd4c5160a0cf7a
 
-
-## ft_services :
-
-
+# ft_services :
 
 ## what is Docker ?
 
@@ -140,3 +139,112 @@ to IP: WPPORT. It should also allow access to /PHPMyAdmin with a reverse proxy t
 - reverse proxy:
 
 [NGINX Docs | NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+
+## MetalLB:
+
+What is load balancing?
+
+> Load balancing is defined as the methodical and efficient distribution of network or application traffic across multiple servers in a server farm. Each load balancer sits between client devices and backend servers, receiving and then distributing incoming requests to any available server capable of fulfilling them.
+
+MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type “LoadBalancer” in clusters that don’t run on a cloud provider, and thus cannot simply hook into paid products to provide load-balancers.
+
+- configuration (.yaml):
+
+Load Balancer will have a single ip . the following configuration gives MetalLB control over IPs from 192.168.1.150 to 192.168.1.150 (just one ip address):
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.1.240-192.168.1.240
+```
+
+- Installation By Manifest :
+
+To install MetalLB, apply the manifest:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+# On first install only
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+```
+
+Once MetalLB is installed and configured, to expose a service externally, simply create it with spec.type set to LoadBalancer and MetalLB will do the rest.
+
+- IP Address Sharing :
+
+By default, Services do not share IP addresses. If you have a need to colocate services on a single IP, you can enable selective IP sharing by adding the [metallb.universe.tf/allow-shared-ip](http://metallb.universe.tf/allow-shared-ip) annotation to services.
+
+```yaml
+annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+```
+
+Ressources :
+
+[MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/installation/)
+
+[MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/configuration/)
+
+[MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/usage/)
+
+## Mysql:
+
+Mysql is an open-source relational database management system . Mysql listening  on  port 3306
+
+and it must be a ClusterIP.
+
+- installation and configuration :
+
+[Mysql](https://wiki.alpinelinux.org/wiki/Mysql)
+
+- Create a new user and grant permissions in Mysql :
+
+[How To Create a New User and Grant Permissions in MySQL | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+
+Create database :
+
+[Create a MySQL Database Using the Command Line](https://www.inmotionhosting.com/support/website/how-to-create-a-database-using-mysql-from-the-command-line/)
+
+- Initialize MySQL Data Directory (optionał):
+
+mysql_install_db initializes the MariaDB data directory and creates the system tables that it contains if they do not exist.
+
+`--user=user_name`
+           The login user name to use for running mysqld. Files and
+           directories created by mysqld will be owned by this user. You
+           must be root to use this option. By default, mysqld runs
+           using your current login name and files and directories that
+           it creates will be owned by you.
+
+`--datadir=path`
+           The path to the MariaDB data directory.
+
+ `/dev/null` 
+
+      is a special file that acts as a black hole
+
+Together they mean "throw away any error messages"
+
+```bash
+mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+```
+
+From inside your Kubernetes network (from container to another container), you can access the service by its name, and not its IP. For example, you have a service "MySQL" linked to a MySQL container. To access this container from an Nginx container, you can try:
+
+```bash
+mysql <database> -u <user> -p -h mysql
+# Normally, we access with IP like that:
+mysql <database> -u <user> -p -h <ip address>
+```
+
+## WordPress :
