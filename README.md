@@ -1,7 +1,9 @@
 ## Ressources :
 
 https://github.com/t0mm4rx/ft_services
+
 http://nginx.org/en/docs/dirindex.html
+
 https://docs.nginx.com/nginx/admin-guide/
 
 
@@ -112,3 +114,29 @@ minikube ip <flags>
 # Stops a running local Kubernetes cluster
 minikube stop <flags>
 ```
+## Nginx :
+
+Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. we need to create an Nginx container listening on ports 80and 443 (HTTPS)  the HTTP port should redirect type 301 to HTTPS. 
+
+This container will allow access to a /WordPress route that makes a redirect 307
+to IP: WPPORT. It should also allow access to /PHPMyAdmin with a reverse proxy to IP: PMAPORT.
+
+[NGINX Docs | Admin Guide](https://docs.nginx.com/nginx/admin-guide/)
+
+- install nginx :
+
+[Nginx](https://wiki.alpinelinux.org/wiki/Nginx)
+
+- SSL cert :
+
+[How To Create a Self-Signed SSL Certificate for Nginx on CentOS 7 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-on-centos-7#step-2-create-the-ssl-certificate)
+
+[Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
+
+- redirect http tp https :
+
+[Redirect HTTP to HTTPS in Nginx](https://linuxize.com/post/redirect-http-to-https-in-nginx/)
+
+- reverse proxy:
+
+[NGINX Docs | NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
