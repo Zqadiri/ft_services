@@ -196,14 +196,13 @@ Ressources :
 [MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/configuration/)
 
 [MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/usage/)
-
 ## Mysql:
 
 Mysql is an open-source relational database management system . Mysql listening  on  port 3306
 
 and it must be a ClusterIP.
 
-- installation and configuration :
+- Installation and configuration :
 
 [Mysql](https://wiki.alpinelinux.org/wiki/Mysql)
 
@@ -217,29 +216,24 @@ Create database :
 
 - Initialize MySQL Data Directory (optionał):
 
+```bash
+mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+```
+
 mysql_install_db initializes the MariaDB data directory and creates the system tables that it contains if they do not exist.
 
-`--user=user_name`
-           The login user name to use for running mysqld. Files and
+`--user=user_name`  The login user name to use for running mysqld. Files and
            directories created by mysqld will be owned by this user. You
            must be root to use this option. By default, mysqld runs
            using your current login name and files and directories that
            it creates will be owned by you.
 
-`--datadir=path`
-           The path to the MariaDB data directory.
+`--datadir=path` The path to the MariaDB data directory.
 
- `/dev/null` 
+ `/dev/null` is a special file that acts as a black hole
+Together they mean "throw away any error messages" .
 
-      is a special file that acts as a black hole
-
-Together they mean "throw away any error messages"
-
-```bash
-mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
-```
-
-From inside your Kubernetes network (from container to another container), you can access the service by its name, and not its IP. For example, you have a service "MySQL" linked to a MySQL container. To access this container from an Nginx container, you can try:
+From inside your Kubernetes network (from container to another container, you can access the service by its name, and not its IP. For example,you have a service "MySQL" linked to a MySQL container. To access thiscontainer from an Nginx container, you can try:
 
 ```bash
 mysql <database> -u <user> -p -h mysql
@@ -248,3 +242,25 @@ mysql <database> -u <user> -p -h <ip address>
 ```
 
 ## WordPress :
+
+we need to create a WordPress website listening on port 5050, which will work with a MySQL database. WordPress needs its own Nginx server.
+
+- Installation :
+
+[WordPress](https://wiki.alpinelinux.org/wiki/WordPress)
+
+- Editing  wp-config.php :
+
+[Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/)
+
+## PhpMyAdmin :
+
+phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. The default HTTP port phpMyAdmin that listens to is 5000 unless you have configured a different port.
+
+- Installation :
+
+[PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
+
+- Configuration :
+
+[Configuration - phpMyAdmin 5.2.0-dev documentation](https://docs.phpmyadmin.net/en/latest/config.html)
