@@ -31,6 +31,8 @@ RUN  chown -R www:www /var/www
 RUN  chown -R www:www /var/lib/nginx
 RUN  mkdir -p /run/nginx
 
+RUN mkdir /var/www/phpmyadmin/tmp/
+RUN chmod 777 /var/www/phpmyadmin/tmp/
 COPY nginx.conf /etc/nginx/nginx.conf 
 
 

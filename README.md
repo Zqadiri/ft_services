@@ -1,10 +1,6 @@
 ## Ressources :
 
-https://github.com/t0mm4rx/ft_services
 
-http://nginx.org/en/docs/dirindex.html
-
-https://docs.nginx.com/nginx/admin-guide/
 
 # Notion :
 
@@ -265,3 +261,28 @@ phpMyAdmin is a free software tool written in PHP, intended to handle the admini
 - Configuration :
 
 [Configuration - phpMyAdmin 5.2.0-dev documentation](https://docs.phpmyadmin.net/en/latest/config.html)
+
+To connect PhpMyAdmin to Mysql server change  `$cfg['Servers'][$i]['host']`  to the hostname or the IP address (ClusterIP) of your server. For example : 
+
+```php
+/* Server parameters */
+$cfg['Servers'][$i]['host'] = '10.101.88.129';
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+```
+
+## InfluxDB :
+
+### What are Time-Series Databases?
+
+> Time Series Databases, as their name state, are database systems specifically designed to handle time-related data.
+
+Systems like Mysql are based on the fact that you have tables. Those tables contain columns and rows each one of them defining an entry in your table. Time Series Databases work differently
+
+Data are still stored in ‘collections’ but those collections share a common denominator : they are aggregated over time.
+
+Essentially, it means that for every point that you are able to store, you have a timestamp associated with it.
+
+ For a better understanding check this out : 
+
+[The Definitive Guide To InfluxDB In 2019 - devconnected](https://devconnected.com/the-definitive-guide-to-influxdb-in-2019/)
