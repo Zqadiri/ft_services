@@ -20,6 +20,8 @@ mysql -u root -e "FLUSH PRIVILEGES;";
 # /etc/init.d/mariadb setup;
 # Export MySQL Database
 # mysql -uUSERNAME -p DB_NAME < import_file.sql
-# mysql -uroot  wp_db < wp_db.sql
-# mysql -uroot  wp_db < wp_db.sql
+mysql -u root  wp_db < wp_db.sql
+mysql -u root -e "CREATE DATABASE phpmyadmin"
+mysql -u root phpmyadmin < phpmyadmin.sql
+
 sleep infinity

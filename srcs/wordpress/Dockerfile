@@ -25,6 +25,7 @@ RUN  chown -R www:www /var/lib/nginx
 RUN  mkdir -p /run/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf 
+
 COPY wp-config.php /var/www/wordpress/wp-config.php
 # RUN apk add wget php5-mysql mysql mysql-client php5-zlib 
 COPY start.sh /start.sh

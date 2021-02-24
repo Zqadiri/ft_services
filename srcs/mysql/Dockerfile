@@ -14,6 +14,8 @@ RUN apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alpine/
 RUN openrc && touch /run/openrc/softlevel
 RUN mkdir -p /etc/telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
+COPY /phpmyadmin.sql /
+COPY /wp_db.sql /
 
 COPY  mariadb-server.cnf  /etc/my.cnf.d
 # datadir It is the directory where your database files are stored.
