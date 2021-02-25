@@ -1,10 +1,10 @@
 
 echo "delete mini...."
-# minikube delete
+minikube delete
 echo "start mini...."
 # export MINI_IP = $(minikube ip)
 # minikube start --driver=virtualbox
-# minikube --memory 3072 --cpus 8 start
+minikube --memory 3072 --cpus 8 start
 eval $(minikube docker-env)
 
 echo "add metallb ...."
@@ -26,8 +26,8 @@ kubectl apply -f mysql.yaml
 kubectl apply -f wordpress.yaml
 kubectl apply -f phpmyadmin.yaml
 kubectl apply -f influxdb.yaml
-# kubectl apply -f grafana.yaml
-kubectl apply -f ftps.yaml
+kubectl apply -f grafana.yaml
+# kubectl apply -f ftps.yaml
 
 minikube dashboard &
 
