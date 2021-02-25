@@ -135,6 +135,18 @@ to IP: WPPORT. It should also allow access to /PHPMyAdmin with a reverse proxy t
 
 - reverse proxy:
 
+What is a reverse proxy?
+
+A reverse proxy is a server that sits in front of web servers and forwards client (e.g. web browser) requests to those web servers. Reverse proxies are typically implemented to help increase security, performance, and reliability. In order to better understand how a reverse proxy works and the benefits it can provide, let’s first define what a proxy server is.
+
+![https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/reverse-proxy-flow.svg](https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/reverse-proxy-flow.svg)
+
+What’s a proxy server?
+
+A forward proxy, often called a proxy, proxy server, or web proxy, is a server that sits in front of a group of client machines. When those computers make requests to sites and services on the Internet, the proxy server intercepts those requests and then communicates with web servers on behalf of those clients, like a middleman.
+
+![https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/forward-proxy-flow.svg](https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/forward-proxy-flow.svg)
+
 [NGINX Docs | NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
 ## MetalLB:
@@ -193,6 +205,7 @@ Ressources :
 [MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/configuration/)
 
 [MetalLB, bare metal load-balancer for Kubernetes](https://metallb.universe.tf/usage/)
+
 ## Mysql:
 
 Mysql is an open-source relational database management system . Mysql listening  on  port 3306
@@ -228,9 +241,10 @@ mysql_install_db initializes the MariaDB data directory and creates the system t
 `--datadir=path` The path to the MariaDB data directory.
 
  `/dev/null` is a special file that acts as a black hole
+
 Together they mean "throw away any error messages" .
 
-From inside your Kubernetes network (from container to another container, you can access the service by its name, and not its IP. For example,you have a service "MySQL" linked to a MySQL container. To access thiscontainer from an Nginx container, you can try:
+ From inside your Kubernetes network (from container to another container), you can access the service by its name, and not its IP. For example, you have a service "MySQL" linked to a MySQL container. To access this container from an Nginx container, you can try:
 
 ```bash
 mysql <database> -u <user> -p -h mysql
@@ -286,3 +300,21 @@ Essentially, it means that for every point that you are able to store, you have 
  For a better understanding check this out : 
 
 [The Definitive Guide To InfluxDB In 2019 - devconnected](https://devconnected.com/the-definitive-guide-to-influxdb-in-2019/)
+
+- Install influxDB:
+
+```bash
+apk add influxdb --no-cache
+```
+
+- Add Telegraf :
+
+It is an agent for collecting, processing, aggregating, and writing metrics. It also has output plugins to send metrics to a variety of other datastores, services, and message queues, including InfluxDB.
+
+```bash
+apk add telegraf --no-cache --repository [http://dl-2.alpinelinux.org/alpine/edge/community](http://dl-2.alpinelinux.org/alpine/edge/community)
+```
+
+- Configuring Telegraf :
+
+[Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)

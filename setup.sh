@@ -1,10 +1,10 @@
 
 echo "delete mini...."
-minikube delete
+# minikube delete
 echo "start mini...."
 # export MINI_IP = $(minikube ip)
 # minikube start --driver=virtualbox
-minikube --memory 3072 --cpus 8 start
+# minikube --memory 3072 --cpus 8 start
 eval $(minikube docker-env)
 
 echo "add metallb ...."
@@ -17,17 +17,17 @@ docker build -t nginx_service  srcs/nginx
 docker build -t mysql_service  srcs/mysql
 docker build -t wordpress_service  srcs/wordpress
 docker build -t phpmyadmin_service  srcs/phpmyadmin
-# docker build -t influxdb_service  srcs/influxdb
+docker build -t influxdb_service  srcs/influxdb
 # docker build -t ftps_service  srcs/ftps
-# docker build -t grafana_service  srcs/grafana
+docker build -t grafana_service  srcs/grafana
 
 kubectl apply -f nginx.yaml
 kubectl apply -f mysql.yaml
 kubectl apply -f wordpress.yaml
 kubectl apply -f phpmyadmin.yaml
-# kubectl apply -f influxdb.yaml
+kubectl apply -f influxdb.yaml
 # kubectl apply -f grafana.yaml
-# kubectl apply -f ftps.yaml
+kubectl apply -f ftps.yaml
 
 minikube dashboard &
 
