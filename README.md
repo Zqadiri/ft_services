@@ -252,6 +252,20 @@ mysql <database> -u <user> -p -h mysql
 mysql <database> -u <user> -p -h <ip address>
 ```
 
+### Persistent Volume and Persistent Volume Claim:
+
+Kubernetes separates the basic unit of storage into two concepts. PV is a piece of storage which supposed to be pre-allocated by an admin. And PVC is a request for a piece of storage by a user.
+
+It said that Kubernetes expects the admin to allocate various sized PVs beforehand. When the user creates PVC to request a piece of storage, Kubernetes will try to match that PVC with a pre-allocated PV. If a match can be found, the PVC will be bound to the PV, and the user will start to use that pre-allocated piece of storage.
+
+- Create a PersistentVolumeClaim :
+
+[Configure a Pod to Use a PersistentVolume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/#create-a-persistentvolumeclaim)
+
+- Example: Deploying WordPress and MySQL with Persistent Volumes :
+
+[Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#deploy-wordpress)
+
 ## WordPress :
 
 we need to create a WordPress website listening on port 5050, which will work with a MySQL database. WordPress needs its own Nginx server.
