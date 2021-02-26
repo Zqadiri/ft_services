@@ -10,7 +10,7 @@ mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 
 rc-status;
 rc-service mariadb start;
-rc-service  telegraf start;
+rc-service telegraf start;
 
 # Create Database in MySQL
 mysql -u root -e "CREATE DATABASE wp_db"
@@ -23,5 +23,5 @@ mysql -u root -e "FLUSH PRIVILEGES;";
 mysql -u root  wp_db < wp_db.sql
 mysql -u root -e "CREATE DATABASE phpmyadmin"
 mysql -u root phpmyadmin < phpmyadmin.sql
-
+telegraf --config /etc/telegraf/telegraf.conf
 sleep infinity

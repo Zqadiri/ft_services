@@ -3,7 +3,7 @@
 # Start Telegraf and Influxdb.
 rc-status
 rc-service telegraf start 
-/usr/sbin/influxd  & sleep 3
+/usr/sbin/influxd
 
 echo "CREATING USER .."
 # influx user create -n admin -p admin  
