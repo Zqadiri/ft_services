@@ -18,6 +18,7 @@ kind: Deployment
 metadata:
   name: influxdb
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: influxdb
@@ -30,9 +31,25 @@ spec:
       - name: influxdb
         image: influxdb_service
         imagePullPolicy: Never
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 8086
+        volumeMounts:
+        - name: influxdb
+          mountPath: /var/lib/influxdb
+      volumes:
+      - name: influxdb
+        persistentVolumeClaim:
+          claimName: influxdb
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb
+  labels:
+    app: influxdb
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
