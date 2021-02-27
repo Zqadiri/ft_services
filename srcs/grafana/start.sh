@@ -1,4 +1,3 @@
-rc-service telegraf start
-telegraf --config /etc/telegraf/telegraf.conf
+telegraf &
 ./bin/grafana-server web
 sleep infinity

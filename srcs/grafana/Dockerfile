@@ -11,5 +11,6 @@ RUN 	 tar -zxvf grafana-7.4.2.linux-amd64.tar.gz
 RUN 	 mv grafana-7.4.2 /usr/share/grafana
 WORKDIR  /usr/share/grafana
 COPY 	 /telegraf.conf	/etc/telegraf/
+COPY	 /grafana.db /usr/share/grafana/data/grafana.db
 COPY 	 start.sh /
 CMD 	 ["sh", "/start.sh"]

@@ -3,7 +3,7 @@ echo "delete mini...."
 minikube delete
 echo "start mini...."
 # export MINI_IP = $(minikube ip)
-export MINIKUBE_HOME="/goinfre/zqadiri/ft_services"
+# export MINIKUBE_HOME="/goinfre/zqadiri/ft_services"
 # minikube start --driver=virtualbox
 minikube --memory 3072 --cpus 4 start
 eval $(minikube docker-env)
