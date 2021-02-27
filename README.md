@@ -7,7 +7,6 @@
 https://www.notion.so/ft_services-f032ecf159dc4994a3bd4c5160a0cf7a
 
 # ft_services :
-
 [Some additional definitions](https://www.notion.so/Some-additional-definitions-94dfc7eae87f456eaa97692a6e008903)
 
 $$Introduction $$
@@ -293,6 +292,10 @@ we need to create a WordPress website listening on port 5050, which will work wi
 
 [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/)
 
+- Add FastCGI Proxying within Nginx is for PHP processing :
+
+[Understanding and Implementing FastCGI Proxying in Nginx | DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-and-implementing-fastcgi-proxying-in-nginx)
+
 ## PhpMyAdmin :
 
 phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web. The default HTTP port phpMyAdmin that listens to is 5000 unless you have configured a different port.
@@ -389,3 +392,19 @@ Start Grafana by running:
 ```bash
 ./bin/grafana-server web
 ```
+
+- Add the templated dashboard for Telegraf : (928 , 914)
+
+[Telegraf: system dashboard dashboard for Grafana](https://grafana.com/grafana/dashboards/928)
+
+[Telegraf system overview dashboard for Grafana](https://grafana.com/grafana/dashboards/914)
+
+- Some good ressources :
+
+[How to Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#prerequisites)
+
+Dashboard overview :
+
+[Dashboards](https://grafana.com/docs/grafana/latest/dashboards/?pg=docs)
+
+[InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/)
