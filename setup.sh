@@ -14,7 +14,6 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 kubectl apply -f metallb.yaml
 
-
 minikube dashboard &
 
 docker build -t nginx_service  srcs/nginx
