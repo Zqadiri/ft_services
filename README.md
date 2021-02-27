@@ -8,13 +8,17 @@ https://www.notion.so/ft_services-f032ecf159dc4994a3bd4c5160a0cf7a
 
 # ft_services :
 
-## what is Docker ?
+[Some additional definitions](https://www.notion.so/Some-additional-definitions-94dfc7eae87f456eaa97692a6e008903)
+
+$$Introduction $$
+
+## what is Docker?
 
 > Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code
 
 ## what is kubernetes ?
 
-> Kubernetes (also known as k8s or "kube") is an open source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications. In other words, you can cluster together groups of hosts running Linux® containers, and Kubernetes helps you easily and efficiently manage those clusters.
+> Kubernetes (also known as k8s or "kube") is an [open source](https://www.redhat.com/en/topics/open-source/what-is-open-source) container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications. In other words, you can cluster together groups of hosts running Linux® containers, and Kubernetes helps you easily and efficiently manage those clusters.
 
 ### Learn to speak Kubernetes :
 
@@ -80,6 +84,10 @@ kubectl get deployment
 kubectl get pods
 kubectl get pods -o wide
 
+# Check Kubernetes storage status
+kubectl get pv         # persistent volume
+kubectl get pvc        # persistent volume claim
+
 # Create a pod from a YAML file
 kubectl create -f <file.yaml>
 
@@ -87,7 +95,7 @@ kubectl create -f <file.yaml>
 kubectl delete deployment <your deployment>
 kubectl delete service <your service>
 
-# Remove a pod using the name and type listed in yaml FILE:
+# Remove a pod using the name and type listed in YAML FILE:
 kubectl delete -f <yaml file>
 
 # Remove all pods
@@ -110,6 +118,7 @@ minikube ip <flags>
 # Stops a running local Kubernetes cluster
 minikube stop <flags>
 ```
+
 ## Nginx :
 
 Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. we need to create an Nginx container listening on ports 80and 443 (HTTPS)  the HTTP port should redirect type 301 to HTTPS. 
@@ -146,6 +155,10 @@ What’s a proxy server?
 A forward proxy, often called a proxy, proxy server, or web proxy, is a server that sits in front of a group of client machines. When those computers make requests to sites and services on the Internet, the proxy server intercepts those requests and then communicates with web servers on behalf of those clients, like a middleman.
 
 ![https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/forward-proxy-flow.svg](https://www.cloudflare.com/img/learning/cdn/glossary/reverse-proxy/forward-proxy-flow.svg)
+
+Allow access to /phpmyadmin with a reverse proxy :
+
+[Setting up an Nginx Reverse Proxy](https://linuxize.com/post/nginx-reverse-proxy/)
 
 [NGINX Docs | NGINX Reverse Proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 
@@ -266,6 +279,8 @@ It said that Kubernetes expects the admin to allocate various sized PVs beforeha
 
 [Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/#deploy-wordpress)
 
+[Kubernetes storage basics: PV, PVC and StorageClass](https://blog.mayadata.io/kubernetes-storage-basics-pv-pvc-and-storageclass)
+
 ## WordPress :
 
 we need to create a WordPress website listening on port 5050, which will work with a MySQL database. WordPress needs its own Nginx server.
@@ -332,3 +347,45 @@ apk add telegraf --no-cache --repository [http://dl-2.alpinelinux.org/alpine/edg
 - Configuring Telegraf :
 
 [Configuring Telegraf](https://docs.influxdata.com/telegraf/v1.17/administration/configuration/)
+
+## Grafana :
+
+Grafana is multi-platform open-source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+
+It helps us track the user behavior, application behavior, frequency of errors popping up in production or a pre-prod environment, type of errors popping up & the contextual scenarios by providing relative data.
+
+We'll send all container data (CPU usage, memory, processes) easily by using Telegraf. It's a simple program that sends system data to an InfluxDB instance.
+
+So our stack is: Telegraf --> InfluxDB --> Grafana Get data Store data Visualize Data
+
+So there are two connections to configure, Telegraf to InfluxDB which is done in the /etc/telegraf/telegraf.conf file, and the Grafana to InfluxDB which is done from the Grafana web interface.
+
+You can test an InfluxDB connection by fetching /ping endpoint:
+
+```bash
+curl [http://influxdb:8086/ping](http://influxdb:8086/ping)
+```
+
+- Install Grafana :
+
+[Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=docker)
+
+Package details:
+
+- Installs binary to `/usr/sbin/grafana-server`
+- Installs Init.d script to `/etc/init.d/grafana-server`
+- Creates default file (environment vars) to `/etc/default/grafana-server`
+- Installs configuration file to `/etc/grafana/grafana.ini`
+- Installs systemd service (if systemd is available) name `grafana-server.service`
+- The default configuration sets the log file at `/var/log/grafana/grafana.log`
+- The default configuration specifies a SQLite3 db at `/var/lib/grafana/grafana.db`
+- Installs HTML/JS/CSS and other Grafana files at `/usr/share/grafana`
+- Execute the binary :
+
+The grafana-server binary `.tar.gz` needs the working directory to be the root install directory where the binary and the public folder are located.
+
+Start Grafana by running:
+
+```bash
+./bin/grafana-server web
+```
