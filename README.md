@@ -10,7 +10,6 @@ https://www.notion.so/ft_services-f032ecf159dc4994a3bd4c5160a0cf7a
 [Some additional definitions](https://www.notion.so/Some-additional-definitions-94dfc7eae87f456eaa97692a6e008903)
 
 $$Introduction $$
-
 ## what is Docker?
 
 > Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and deploy it as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code
@@ -408,3 +407,21 @@ Dashboard overview :
 [Dashboards](https://grafana.com/docs/grafana/latest/dashboards/?pg=docs)
 
 [InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/)
+
+## FTPs :
+
+### What is FTP?
+
+FTP is also referred to as File Transfer Protocol.
+
+FTP is a standard network protocol used to transfer files from one computer to another over the Internet. FTP users authenticate themselves using a sign-in protocol, normally in the form of a username and password.
+
+Installation :
+
+[FTP](https://wiki.alpinelinux.org/wiki/FTP)
+
+[vsftpd.conf(5) - Linux man page](https://linux.die.net/man/5/vsftpd.conf)
+
+- Configure vsftpd to use SSL:
+
+[How To Configure vsftpd to Use SSL/TLS on an Ubuntu VPS | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-vsftpd-to-use-ssl-tls-on-an-ubuntu-vps)
