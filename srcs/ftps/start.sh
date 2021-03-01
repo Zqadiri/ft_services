@@ -1,6 +1,7 @@
 #!/bin/bash
 # rc-status 
-adduser zqadiri < /psd 
+adduser admin < /psd 
 rc-update 
 rc-service vsftpd start
+telegraf &
 sleep infinity
