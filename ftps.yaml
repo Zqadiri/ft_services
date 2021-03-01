@@ -15,10 +15,6 @@ spec:
       containers:
       - name: ftps
         image: ftps_service
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "700m"
         ports:
         - containerPort: 21
         imagePullPolicy: Never

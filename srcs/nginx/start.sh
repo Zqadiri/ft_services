@@ -1,5 +1,5 @@
 #!/bin/bash
-adduser  user < /psd
+adduser user < /psd
 rc-status
 rc-update 
 rc-service sshd restart

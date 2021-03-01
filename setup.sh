@@ -4,7 +4,7 @@ minikube delete
 echo "start mini...."
 # export MINI_IP = $(minikube ip)
 # export MINIKUBE_HOME="/goinfre/zqadiri/ft_services"
-# minikube start --driver=virtualbox
+# minikube start 
 minikube --memory 3072 --cpus 4 start
 eval $(minikube docker-env)
 
@@ -16,21 +16,28 @@ kubectl apply -f metallb.yaml
 
 minikube dashboard &
 
-docker build -t nginx_service  srcs/nginx
-docker build -t mysql_service  srcs/mysql
-docker build -t wordpress_service  srcs/wordpress
-docker build -t phpmyadmin_service  srcs/phpmyadmin
-docker build -t influxdb_service  srcs/influxdb
-# docker build -t ftps_service  srcs/ftps
-docker build -t grafana_service  srcs/grafana
+docker build -t ftps_service  srcs/ftps
+kubectl apply -f ftps.yaml
 
+docker build -t nginx_service  srcs/nginx
 kubectl apply -f nginx.yaml
+
+docker build -t mysql_service  srcs/mysql
 kubectl apply -f mysql.yaml
+
+docker build -t wordpress_service  srcs/wordpress
 kubectl apply -f wordpress.yaml
+
+docker build -t phpmyadmin_service  srcs/phpmyadmin
 kubectl apply -f phpmyadmin.yaml
+
+docker build -t influxdb_service  srcs/influxdb
 kubectl apply -f influxdb.yaml
+
+docker build -t grafana_service  srcs/grafana
 kubectl apply -f grafana.yaml
-# kubectl apply -f ftps.yaml
+
+
 
 
 # https://skylerlehan.dev/reconfigure-minikubes-cpus-and-memory/
