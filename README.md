@@ -425,3 +425,29 @@ Installation :
 - Configure vsftpd to use SSL:
 
 [How To Configure vsftpd to Use SSL/TLS on an Ubuntu VPS | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-vsftpd-to-use-ssl-tls-on-an-ubuntu-vps)
+
+## Liveness probe:
+
+Liveness probes let Kubernetes know if your app is alive or dead. If your app is alive, then Kubernetes leaves it alone. If your app is dead, Kubernetes removes the Pod and starts a new one to replace it.
+
+### What is the difference between liveness and readiness probe?
+
+Both liveness & readiness probes are used to control the health of an application. Failing liveness probe will restart the container, whereas failing readiness probe will stop our application from serving traffic.
+
+### Type of Probes :
+
+There are three types of probes: HTTP, Command, and TCP. You can use any of them for liveness and readiness checks.
+
+**`HTTP`**
+
+HTTP probes are probably the most common type of custom liveness probe. Even if your app isn’t an HTTP server, you can create a lightweight HTTP server inside your app to respond to the liveness probe. Kubernetes pings a path, and if it gets an HTTP response in the 200 or 300 range, it marks the app as healthy. Otherwise, it is marked as unhealthy.
+
+**`Command`**
+
+For command probes, Kubernetes runs a command inside your container. If the command returns with exit code 0, then the container is marked as healthy. Otherwise, it is marked unhealthy.
+
+**`TCP`**
+
+The last type of probe is the TCP probe, where Kubernetes tries to establish a TCP connection on the specified port. If it can establish a connection, the container is considered healthy; if it can’t it is considered unhealthy.
+
+[How to define a liveness command](https://stackoverflow.com/questions/45647825/how-to-define-a-liveness-command)

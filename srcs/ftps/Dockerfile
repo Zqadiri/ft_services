@@ -1,7 +1,6 @@
 FROM    alpine:3.11
 RUN     apk update
-RUN     apk add vsftpd
-# RUN     apk add vsftpd-doc
+RUN     apk add vsftpd vsftpd-doc
 RUN     apk add vim openrc openssl --no-cache
 
 # Add FTP configuration
