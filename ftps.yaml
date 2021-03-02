@@ -15,9 +15,14 @@ spec:
       containers:
       - name: ftps
         image: ftps_service
-        ports:
-        - containerPort: 21
-        imagePullPolicy: Never
+      ports:
+        - name: ftps
+          containerPort: 21
+        - name: min
+          containerPort: 21010
+        - name: max
+          containerPort: 21011
+      imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +36,13 @@ spec:
   selector:
     app: ftps
   ports:
-  - port: 21
+  - name : ftps
+    port: 21
     targetPort: 21
+  - name: min
+    port: 21010
+    targetPort: 21010
+  - name: max
+    port: 21011
+    targetPort: 21011
   type: LoadBalancer
