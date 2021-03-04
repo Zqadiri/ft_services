@@ -20,5 +20,7 @@ COPY /wp_db.sql /
 COPY  mariadb-server.cnf  /etc/my.cnf.d
 # datadir It is the directory where your database files are stored.
 COPY start.sh /start.sh
+COPY health.sh /tmp/health.sh
+
 RUN chmod +x start.sh
 CMD ["sh", "start.sh"]

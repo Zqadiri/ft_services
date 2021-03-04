@@ -35,7 +35,7 @@ RUN mkdir /var/www/phpmyadmin/tmp/
 RUN chmod 777 /var/www/phpmyadmin/tmp/
 COPY nginx.conf /etc/nginx/nginx.conf 
 
-
+COPY health.sh /tmp/health.sh
 COPY start.sh /start.sh
 RUN chmod +x start.sh
 CMD ["sh", "start.sh"]

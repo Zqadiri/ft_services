@@ -38,6 +38,13 @@ spec:
         ports:
         - name : sql
           containerPort: 3306
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/health.sh
+          initialDelaySeconds: 10
+          periodSeconds: 5
         volumeMounts:
         - name: mysql
           mountPath: /var/lib/mysql 

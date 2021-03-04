@@ -42,3 +42,10 @@ spec:
 # provides a list of ports that get exposed by the container. You don’t really need to specify this list—even if it’s empty, as long as your containers are listening on the port, they’ll still be available for network access. This just provides some extra information to Kubernetes.
         ports:
         - containerPort: 5000
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/health.sh
+          initialDelaySeconds: 10
+          periodSeconds: 5

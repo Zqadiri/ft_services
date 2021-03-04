@@ -15,14 +15,14 @@ spec:
       containers:
       - name: ftps
         image: ftps_service
-      ports:
+        imagePullPolicy: Never
+        ports:
         - name: ftps
           containerPort: 21
         - name: min
           containerPort: 21010
         - name: max
           containerPort: 21011
-      imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service

@@ -1,5 +1,6 @@
 #!/bin/bash
 adduser user < /psd
+# /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 rc-status
 rc-update 
 rc-service sshd restart

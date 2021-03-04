@@ -12,6 +12,7 @@ RUN openrc && touch /run/openrc/softlevel && \
 # RUN  mkdir -p /etc/telegraf
 COPY telegraf.conf /etc/telegraf/telegraf.conf
 COPY start.sh  /start.sh 
+COPY health.sh /tmp/health.sh
 RUN chmod +x start.sh
 CMD ["sh", "start.sh"]
 # ENTRYPOINT sh start.sh 
