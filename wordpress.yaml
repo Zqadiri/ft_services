@@ -38,5 +38,13 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 5050
+        - name: wp
+          containerPort: 5050
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/health.sh
+          initialDelaySeconds: 10
+          periodSeconds: 5
 

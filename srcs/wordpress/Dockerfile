@@ -29,6 +29,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY wp-config.php /var/www/wordpress/wp-config.php
 # RUN apk add wget php5-mysql mysql mysql-client php5-zlib 
 COPY start.sh /start.sh
+COPY health.sh /tmp/health.sh
+
 RUN chmod +x start.sh
 CMD ["sh", "start.sh"]
 
