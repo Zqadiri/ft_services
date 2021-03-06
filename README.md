@@ -426,6 +426,12 @@ Installation :
 
 [How To Configure vsftpd to Use SSL/TLS on an Ubuntu VPS | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-vsftpd-to-use-ssl-tls-on-an-ubuntu-vps)
 
+[Very Secure FTP Daemon](https://wiki.archlinux.org/index.php/Very_Secure_FTP_Daemon)
+
+- FileZilla Client Tutorial :
+
+[FileZilla Client Tutorial (en)](https://wiki.filezilla-project.org/FileZilla_Client_Tutorial_(en))
+
 ## Liveness probe:
 
 Liveness probes let Kubernetes know if your app is alive or dead. If your app is alive, then Kubernetes leaves it alone. If your app is dead, Kubernetes removes the Pod and starts a new one to replace it.
