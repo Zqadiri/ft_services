@@ -38,10 +38,10 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3000
-        # livenessProbe:
-        #   exec:
-        #     command:
-        #     - /bin/sh
-        #     - /tmp/health.sh
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/health.sh
+          initialDelaySeconds: 10
+          periodSeconds: 5
