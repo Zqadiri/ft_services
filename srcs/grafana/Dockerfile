@@ -13,4 +13,5 @@ WORKDIR  /usr/share/grafana
 COPY 	 /telegraf.conf	/etc/telegraf/
 COPY	 /grafana.db /usr/share/grafana/data/grafana.db
 COPY 	 start.sh /
+COPY 	 health.sh /tmp/health.sh
 CMD 	 ["sh", "/start.sh"]

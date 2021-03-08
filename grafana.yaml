@@ -31,10 +31,17 @@ spec:
       containers:
       - name: grafana
         image: grafana_service
+        imagePullPolicy: Never
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 3000
-        imagePullPolicy: Never
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - /tmp/health.sh
+          initialDelaySeconds: 10
+          periodSeconds: 5

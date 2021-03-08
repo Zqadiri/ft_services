@@ -29,7 +29,7 @@ As is the case with most technologies, language specific to Kubernetes can ac
 - **Service:** This decouples work definitions from the pods. Kubernetes service proxies automatically get service requests to the right pod—no matter where it moves in the cluster or even if it’s been replaced.
 - **Kubelet:** This service runs on nodes, reads the container manifests, and ensures the defined containers are started and running.
 - **kubectl:** The command line configuration tool for Kubernetes.
-- **Deployments :** represent a set of multiple, identical Pods with no unique identities. A Deployment runs multiple replicas of your application and automatically replaces any instances that fail or become unresponsive. In this way, Deployments help ensure that one or more instances of your application are available to serve user requests. Deployments are managed by the Kubernetes Deployment controller.
+- **Deployment :** represent a set of multiple, identical Pods with no unique identities. A Deployment runs multiple replicas of your application and automatically replaces any instances that fail or become unresponsive. In this way, Deployments help ensure that one or more instances of your application are available to serve user requests. Deployments are managed by the Kubernetes Deployment controller.
 
 ## what is Minikube ?
 
@@ -455,5 +455,11 @@ For command probes, Kubernetes runs a command inside your container. If the comm
 **`TCP`**
 
 The last type of probe is the TCP probe, where Kubernetes tries to establish a TCP connection on the specified port. If it can establish a connection, the container is considered healthy; if it can’t it is considered unhealthy.
+
+- Some ressources :
+
+[Kubernetes best practices: Setting up health checks with readiness and liveness probes | Google Cloud Blog](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes)
+
+[Configure Liveness, Readiness and Startup Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 
 [How to define a liveness command](https://stackoverflow.com/questions/45647825/how-to-define-a-liveness-command)
