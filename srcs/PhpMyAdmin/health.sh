@@ -1,10 +1,11 @@
-rc-service nginx status
-ps_1=$?
+#!/bin/bash
+pgrep nginx
+pr_1=$?
 pgrep telegraf
-ps_2=$?
-rc-service php-fpm7 status
-ps_3=$?
-if [ $ps_1 -eq 0 ] && [ $ps_2 -eq 0 ] && [ $ps_3 -eq 0 ] ; then
+pr_2=$?
+pgreg php-fpm
+pr_3=$?
+if [ $pr_1 -eq 0 ] && [ $pr_2 -eq 0 ] && [ $pr_3 -eq 0 ] ; then
         exit 0;
 fi
-exit 1;
+        exit 1;
