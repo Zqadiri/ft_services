@@ -1,10 +1,16 @@
-#!/bin/bash
-pgrep telegraf
-pr_1=$?
-pgrep grafana-server
-pr_2=$?
-if [$pr_1 -eq 0] && [$pr_2 -eq 0]; then 
-    exit 0;
-else 
-    exit 1; 
+#!/bin/sh
+# grafana 
+ps | grep -v grep | grep grafana-server
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
+fi
+
+# Telegraf
+ps | grep -v grep | grep telegraf
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
 fi

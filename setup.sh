@@ -16,6 +16,14 @@ kubectl apply -f metallb.yaml
 
 minikube dashboard &
 
+echo "INFLUXDB .."
+docker build -t influxdb_service  srcs/influxdb
+kubectl apply -f influxdb.yaml
+
+echo "GRAFANA .."
+docker build -t grafana_service  srcs/grafana
+kubectl apply -f grafana.yaml
+
 echo "FTPS .. "
 docker build -t ftps_service  srcs/ftps
 kubectl apply -f ftps.yaml
@@ -36,13 +44,8 @@ echo "PHPMYADMIN .."
 docker build -t phpmyadmin_service  srcs/phpmyadmin
 kubectl apply -f phpmyadmin.yaml
 
-echo "INFLUXDB .."
-docker build -t influxdb_service  srcs/influxdb
-kubectl apply -f influxdb.yaml
 
-echo "GRAFANA .."
-docker build -t grafana_service  srcs/grafana
-kubectl apply -f grafana.yaml
+
 
 
 

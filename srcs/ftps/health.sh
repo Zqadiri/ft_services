@@ -1,9 +1,16 @@
-pgrep vsftpd
-pr_1=$?
-pgrep telegraf
-pr_2=$?
-if [$pr_1 -eq 0] && [$pr_2 -eq 0]; then 
-    exit 0; 
-else 
-    exit 1; 
+#!/bin/sh
+# vsftpd
+ps | grep -v grep | grep vsftpd
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
+fi
+
+# Telegraf
+ps | grep -v grep | grep telegraf
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
 fi

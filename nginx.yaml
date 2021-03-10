@@ -65,5 +65,5 @@ spec:
             command:
             - /bin/sh
             - /tmp/health.sh
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           periodSeconds: 5

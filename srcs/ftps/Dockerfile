@@ -21,5 +21,7 @@ COPY    /psd /
 
 EXPOSE  21 21010 21011
 COPY    start.sh /start.sh
+COPY    health.sh /tmp/health.sh
+
 RUN     chmod +x start.sh
 CMD     ["sh", "start.sh"]

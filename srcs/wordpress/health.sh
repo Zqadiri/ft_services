@@ -1,11 +1,24 @@
-#!/bin/bash
-pgrep nginx
-pr_1=$?
-pgrep telegraf
-pr_2=$?
-pgreg php-fpm
-pr_3=$?
-if [ $pr_1 -eq 0 ] && [ $pr_2 -eq 0 ] && [ $pr_3 -eq 0 ] ; then
-        exit 0;
+#!/bin/sh
+# Nginx 
+ps | grep -v grep | grep nginx
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
 fi
-        exit 1;
+
+# Telegraf
+ps | grep -v grep | grep telegraf
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
+fi
+
+# php-fpm
+ps | grep -v grep | grep php-fpm
+$pr=$?
+if [ $pr -ne 0 ];
+then
+exit $pr;
+fi
