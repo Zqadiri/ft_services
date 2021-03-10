@@ -14,7 +14,7 @@ RUN     apk add telegraf --no-cache --repository http://dl-2.alpinelinux.org/alp
 COPY    telegraf.conf /etc/telegraf/telegraf.conf
 
 # Add SSL cert
-RUN yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+RUN yes ""| openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
 
 # Add user 
 COPY    /psd /
