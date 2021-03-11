@@ -11,8 +11,6 @@
 
 # Galera-related settings
 [galera]
-# Mandatory settings
-#wsrep_on=ON
 #wsrep_provider=
 #wsrep_cluster_address=
 #binlog_format=row

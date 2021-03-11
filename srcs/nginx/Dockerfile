@@ -7,9 +7,9 @@ EXPOSE  22
 RUN     apk update
 RUN     apk upgrade
 RUN     apk add openssh-server
-RUN     apk add openssl
+RUN     apk add openssl 
 RUN     apk add --no-cache openrc
-RUN     apk add vim
+RUN     apk add vim curl
 RUN     apk add nginx
 
 # Telegraf
