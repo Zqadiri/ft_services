@@ -16,34 +16,33 @@ kubectl apply -f metallb.yaml
 
 minikube dashboard &
 
-echo "INFLUXDB .."
-docker build -t influxdb_service  srcs/influxdb
-kubectl apply -f influxdb.yaml
-
-echo "GRAFANA .."
-docker build -t grafana_service  srcs/grafana
-kubectl apply -f grafana.yaml
+echo "NGINX .."
+docker build -t nginx_service  srcs/nginx
+kubectl apply -f srcs/nginx.yaml
 
 echo "FTPS .. "
 docker build -t ftps_service  srcs/ftps
-kubectl apply -f ftps.yaml
-
-echo "NGINX .."
-docker build -t nginx_service  srcs/nginx
-kubectl apply -f nginx.yaml
+kubectl apply -f srcs/ftps.yaml
 
 echo "MYSQL .."
 docker build -t mysql_service  srcs/mysql
-kubectl apply -f mysql.yaml
+kubectl apply -f srcs/mysql.yaml
 
 echo "WORDPRESS .."
 docker build -t wordpress_service  srcs/wordpress
-kubectl apply -f wordpress.yaml
+kubectl apply -f srcs/wordpress.yaml
 
 echo "PHPMYADMIN .."
 docker build -t phpmyadmin_service  srcs/phpmyadmin
-kubectl apply -f phpmyadmin.yaml
+kubectl apply -f srcs/phpmyadmin.yaml
 
+echo "INFLUXDB .."
+docker build -t influxdb_service  srcs/influxdb
+kubectl apply -f srcs/influxdb.yaml
+
+echo "GRAFANA .."
+docker build -t grafana_service  srcs/grafana
+kubectl apply -f srcs/grafana.yaml
 
 
 

@@ -1,0 +1,19 @@
+# MetalLB is a load-balancer implementation for bare metal Kubernetes 
+# clusters, using standard routing protocols.
+
+# load balancing refers to the process of distributing a set 
+# of tasks over a set of resources, with the aim 
+# of making their overall processing more efficient.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.99.103-192.168.99.103
