@@ -1,7 +1,7 @@
 #!/bin/bash
 # mysqld
 ps | grep -v grep | grep mysqld
-$r=$?
+pr=$?
 if [ $r -ne 0 ];
 then
 exit $r;
@@ -9,7 +9,7 @@ fi
 
 # Telegraf
 ps | grep -v grep | grep telegraf
-$r=$?
+pr=$?
 if [ $r -ne 0 ];
 then
 exit $r;

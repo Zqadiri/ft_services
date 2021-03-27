@@ -1,7 +1,7 @@
 #!/bin/sh
 # Influxd
 ps | grep -v grep | grep influxd
-$pr=$?
+pr=$?
 if [ $pr -ne 0 ];
 then
 exit $pr;
@@ -9,7 +9,7 @@ fi
 
 # Telegraf
 ps | grep -v grep | grep telegraf
-$pr=$?
+pr=$?
 if [ $pr -ne 0 ];
 then
 exit $pr;

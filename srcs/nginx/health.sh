@@ -1,7 +1,7 @@
 #!/bin/sh
 # Nginx 
 ps | grep -v grep | grep nginx
-$pr=$?
+pr=$?
 if [ $pr -ne 0 ];
 then
 exit $pr;
@@ -9,7 +9,7 @@ fi
 
 # Telegraf
 ps | grep -v grep | grep telegraf
-$pr=$?
+pr=$?
 if [ $pr -ne 0 ];
 then
 exit $pr;
@@ -17,7 +17,7 @@ fi
 
 # SSH 
 ps | grep -v grep | grep sshd
-$pr=$?
+pr=$?
 if [ $pr -ne 0 ];
 then
 exit $pr;
